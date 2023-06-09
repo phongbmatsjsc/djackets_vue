@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import Product from '../views/Product.vue'
-import Category from '../views/Category.vue'
-import Search from '../views/Search.vue'
+import HomeView from '@/views/HomeView.vue'
+import Product from '@/views/Product.vue'
+import Category from '@/views/Category.vue'
+import Search from '@/views/Search.vue'
+import Cart from '@/views/Cart.vue'
+import SignUp from '@/views/SignUp.vue'
+import LogIn from '@/views/LogIn.vue'
+// change to lazy-loaded
 
 const routes = [
   {
@@ -19,6 +23,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
+    path: '/sign-up',
+    name: 'SignUp',
+    component: SignUp
+  },
+  {
+    path: '/log-in',
+    name: 'LogIn',
+    component: LogIn
+  },
+  {
     path: '/search/',
     name: 'Search',
     component: Search
@@ -32,6 +46,11 @@ const routes = [
     path: '/:category_slug/',
     name: 'Category',
     component: Category
+  },
+  {
+    path: '/cart/',
+    name: 'Cart',
+    component: Cart
   },
 ]
 
