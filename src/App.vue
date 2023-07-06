@@ -44,7 +44,6 @@
 
           <div class="navbar-item">
             <div class="buttons">
-
               <template v-if="$store.state.isAuthenticated">                  
                 <router-link to="/my-account" class="button is-light">My Account</router-link>
               </template>
@@ -69,7 +68,7 @@
       <div class="lds-dual-ring"></div>
     </div>
 
-    <section class="section">
+    <section class="section is-medium">
       <router-view />
     </section>
 
@@ -117,6 +116,15 @@ export default {
 <style lang="scss">
 @import "../node_modules/bulma";
 
+.navbar {
+  padding: 4px 0;
+}
+
+.section {
+  max-width: 1200px;
+  margin: auto;
+}
+
 .lds-dual-ring {
   display: inline-block;
   width: 80px;
@@ -153,4 +161,6 @@ export default {
     height: 80px;
   }
 }
+
+
 </style>

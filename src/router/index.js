@@ -3,18 +3,6 @@ import store from '@/store'
 
 import HomeView from '@/views/HomeView.vue'
 
-import SignUp from '@/views/SignUp.vue'
-import LogIn from '@/views/LogIn.vue'
-import MyAccount from '@/views/MyAccount.vue'
-
-import Product from '@/views/Product.vue'
-import Category from '@/views/Category.vue'
-import Search from '@/views/Search.vue'
-import Cart from '@/views/Cart.vue'
-import Checkout from '@/views/Checkout.vue'
-import Success from '@/views/Success.vue'
-// change to lazy-loaded
-
 const routes = [
   {
     path: '/',
@@ -24,25 +12,22 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import('../views/AboutView.vue'),
   },
   {
     path: '/sign-up',
     name: 'SignUp',
-    component: SignUp
+    component: () => import('../views/SignUp.vue'),
   },
   {
     path: '/log-in',
     name: 'LogIn',
-    component: LogIn
+    component: () => import('../views/LogIn.vue'), 
   },
   {
     path: '/my-account',
     name: 'MyAccount',
-    component: MyAccount, 
+    component: () => import('../views/MyAccount.vue'), 
     meta: {
       requireLogin: true
     }
@@ -50,27 +35,27 @@ const routes = [
   {
     path: '/search/',
     name: 'Search',
-    component: Search
+    component: () => import('../views/Search.vue'), 
   },
   {
     path: '/:category_slug/:product_slug/',
     name: 'Product',
-    component: Product
+    component: () => import('../views/Product.vue'), 
   },
   {
     path: '/:category_slug/',
     name: 'Category',
-    component: Category
+    component: () => import('../views/Category.vue'), 
   },
   {
     path: '/cart/',
     name: 'Cart',
-    component: Cart
+    component: () => import('../views/Cart.vue'), 
   },
   {
     path: '/cart/checkout',
     name: 'Checkout',
-    component: Checkout, 
+    component: () => import('../views/Checkout.vue'), 
     meta: {
       requireLogin: true
     }
@@ -78,7 +63,7 @@ const routes = [
   {
     path: '/cart/success',
     name: 'Success',
-    component: Success, 
+    component: () => import('../views/Success.vue'), 
   },
 ]
 
