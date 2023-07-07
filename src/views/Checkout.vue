@@ -138,7 +138,7 @@
             }
         },
         mounted() {
-            document.title = 'Checkout | Djackets'
+            document.title = 'Checkout | TheMuscleShop'
             this.cart = this.$store.state.cart
 
             if (this.cartTotalLength > 0) {

@@ -1,15 +1,16 @@
 <template>
   <div class="home">
-    <section class="hero is-medium is-dark mb-6">
+    <!-- <section class="hero is-medium is-dark mb-6">
       <div class="hero-body has-text-centered">
-        <p class="title mb-6">Welcome to Djackets</p>
-        <p class="subtitle">The best jacket store online</p>
+        <p class="title mb-6">Welcome to The Muscle Shop</p>
+        <p class="subtitle">Optimize your gain with us.</p>
       </div>
-    </section>
+    </section> -->
+    <img src="@/assets/img/logo-white-extended.png" alt="">
 
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="is-size-2 has-text-centered">Latest products</h2>
+        <h2 class="is-size-2 has-text-centered is-responsive">Latest products</h2>
       </div>
       <ProductBox
         v-for="product in latestProducts"
@@ -37,7 +38,7 @@ export default {
   },
   mounted() {
     this.getLatestProducts()
-    document.title = 'Home | Djackets'
+    document.title = 'Home | TheMuscleShop'
   },
   methods: {
     async getLatestProducts() {
@@ -57,3 +58,5 @@ export default {
 </script>
 
 
+<style lang="scss" scoped>
+</style>

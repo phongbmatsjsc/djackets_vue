@@ -58,6 +58,9 @@
                 errors:[],
             }
         },
+        mounted() {
+            document.title = 'Sign Up | TheMuscleShop'
+        },
         methods: {
             submitForm() {
                 this.errors = []
