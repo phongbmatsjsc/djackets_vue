@@ -1,6 +1,6 @@
 <template>
     <!-- NAVBAR -->
-    <nav class="navbar is-dark">
+    <nav class="navbar is-black">
         <!-- NAVBAR BRAND -->
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item">

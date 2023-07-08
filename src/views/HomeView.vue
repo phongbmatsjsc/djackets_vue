@@ -6,9 +6,9 @@
         <p class="subtitle">Optimize your gain with us.</p>
       </div>
     </section> -->
-    <img src="@/assets/img/logo-white-extended.png" alt="">
+    <img class="mb-6" src="@/assets/img/logo-white-long.jpg" alt="">
 
-    <div class="columns is-multiline">
+    <div class="columns is-four-fifths is-multiline is-centered">
       <div class="column is-12">
         <h2 class="is-size-2 has-text-centered is-responsive">Latest products</h2>
       </div>
