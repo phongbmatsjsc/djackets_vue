@@ -42,8 +42,9 @@
             async performSearch() {
                 this.$store.commit('setIsLoading', true)
                 const querySearch = this.$route.params.query
+                console.log(this.query)
                 await axios
-                    .post('/api/v1/products/search/', {'query': this.query})
+                    .get(`/api/v1/products/search?query=${this.query}`)
                     .then(response => {
                         this.products = response.data
                     })
