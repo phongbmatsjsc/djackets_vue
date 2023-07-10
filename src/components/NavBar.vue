@@ -20,58 +20,80 @@
         </a>
         </div>
 
-        <!-- NAVBAR MENU -->
         <div
         class="navbar-menu"
         id="navbar-menu"
         v-bind:class="{ 'is-active': showMobileMenu }"
         >
+
+        <!-- NAVBAR START ~ SEARCH-->
         <div class="navbar-start">
             <div class="navbar-item">
-            <form method="get" action="/search">
-                <div class="field has-addons">
-                <div class="control">
-                    <input
-                    type="text"
-                    class="input"
-                    placeholder="What are you up to?"
-                    name="query"
-                    />
-                </div>
-                <div class="control">
-                    <button class="button is-success">
-                    <span class="icon"><i class="fas fa-search"></i></span>
-                    </button>
-                </div>
-                </div>
-            </form>
+              <form method="get" action="/search">
+                  <div class="field has-addons">
+                  <div class="control">
+                      <input
+                      type="text"
+                      class="input"
+                      placeholder="What are you up to?"
+                      name="query"
+                      />
+                  </div>
+                  <div class="control">
+                      <button class="button is-success">
+                      <span class="icon"><i class="fas fa-search"></i></span>
+                      </button>
+                  </div>
+                  </div>
+              </form>
             </div>
         </div>
-        <div class="navbar-end">          
-            <router-link v-for="category in categories" :to="`${ category.link }`" class="navbar-item">{{ category.name }}</router-link>
 
+        <!-- NAVBAR END -->
+        <div class="navbar-end">
+            <!-- EXERLIB AND PRODUCTS -->
             <div class="navbar-item">
-            <div class="buttons">
-                <template v-if="$store.state.isAuthenticated">
-                <router-link to="/my-account" class="button is-light"
-                    >My Account</router-link
-                >
-                </template>
-                <template v-else>
-                <router-link to="/log-in" class="button is-light"
-                    >Log in</router-link
-                >
-                </template>
-
-                <router-link to="/cart" class="button is-success">
-                <span class="icon">
-                    <i class="fas fa-shopping-cart"></i>
-                </span>
-                <span>Cart ({{ cartTotalLength }})</span>
+              <div class="buttons">
+                <router-link class="button is-primary" to="/exercises">
+                  ExerLib
                 </router-link>
+                <div class="dropdown is-hoverable">
+                  <div class="dropdown-trigger">
+                    <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span>Products</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <router-link v-for="category in categories" :to="`${ category.link }`" class="dropdown-item is">{{ category.name }}</router-link>                  
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- ACCOUNT AND CART -->
+            <div class="navbar-item">
+              <div class="buttons">
+                  <template v-if="$store.state.isAuthenticated">
+                  <router-link to="/my-account" class="button is-light"
+                      >My Account</router-link>
+                  </template>
+                  <template v-else>
+                  <router-link to="/log-in" class="button is-light"
+                      >Log in</router-link>
+                  </template>
+                  <router-link to="/cart" class="button is-success">
+                  <span class="icon">
+                      <i class="fas fa-shopping-cart"></i>
+                  </span>
+                  <span>Cart ({{ cartTotalLength }})</span>
+                  </router-link>
+              </div>
             </div>
-        </div>
+          </div>
         </div>
     </nav>
     <div class="is-loading-bar has-text-centered" :class="{'is-loading': $store.state.isLoading}">
@@ -86,6 +108,7 @@ export default {
   data() {
     return {
       showMobileMenu: false,
+      dropdownActive: false,
       cart: {
         items: [],
       },
