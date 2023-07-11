@@ -1,6 +1,6 @@
 <template>
     <div class="column is-3">
-        <div class="box">
+        <div class="box custom">
           <figure class="image is-4by5 mb-4">
             <img :src="product.get_thumbnail" :alt="product.description">
           </figure>
@@ -24,9 +24,6 @@
 <style lang="scss" scoped>
 
 .image {
-  margin-top: -1.25rem;
-  margin-left: -1.25rem;
-  margin-right: -1.25rem;
   overflow: hidden;
 
   img {
@@ -34,4 +31,8 @@
   }
 }
 
+.custom {
+  padding: 0.75rem;
+  background-color: white;
+}
 </style>

@@ -1,4 +1,5 @@
 <template>
+    <h2 class="title has-text-centered top-title">Exercises Library</h2>
     <div class="level">
         <div class="level-left">
         <div class="level-item">
@@ -31,7 +32,7 @@
                 class="level-item button is-success"
                 v-for="type in exerciseTypes"
                 :key="type.id"
-                @click="getExercises(`${type.link}`)"
+                @click="getExerciseByType(`${type.link}`)"
             >
                 {{ type.name }}
             </div>
@@ -39,29 +40,28 @@
     </div>
 
     <div class="columns is-multiline">
-        <div class="column is-12">
-            <div class="column is-4">
-                <div v-for="ex in exercises" :key="ex.id" class="card">
-                    <div class="card-image">
-                    <figure class="image">
-                        <img :src="ex.get_thumbnail" />
-                    </figure>
-                    </div>
-                    <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                        <p class="title is-4">{{ ex.name }}</p>
-                        <p class="subtitle is-6">Other muscles: {{ ex.others }}</p>
-                        </div>
-                    </div>
-            
-                    <div class="content">
-                        {{ ex.instruction }}
-                    </div>
-                    </div>
+          <div v-for="ex in exercises" :key="ex.id" class="column is-12">
+              <div class="columns mt-2 inner">
+                <div class="column is-4">
+                  <figure class="image">
+                      <img :src="ex.get_thumbnail" />
+                  </figure>
                 </div>
-            </div>
-        </div>
+                <div class="column is-8">
+                  <div class="media mb-2 mb-2">
+                      <div class="media-content">
+                      <p class="title is-4">{{ ex.name }}</p>
+                      <p class="subtitle is-5 is-italic">Other muscles: {{ ex.others }}</p>
+                      </div>
+                  </div>      
+                  <div class="content">
+                      <strong>Instruction</strong>
+                      <p>{{ ex.instruction }}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+            
     </div>
 </template>
 
@@ -87,6 +87,7 @@ export default {
   mounted() {
     document.title = "Exercises Library | TheMuscleShop";
     this.getAllExercisesType();
+    this.getLatestExercises();
   },
   methods: {
     async getAllExercisesType() {
@@ -102,7 +103,18 @@ export default {
         });
     },
 
-    async getExercises(type) {
+    async getLatestExercises() {
+      axios
+        .get("/api/v1/latest-exercises/")
+        .then((response) => {
+          this.exercises = response.data
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    },
+
+    async getExerciseByType(type) {
       this.$store.commit("setIsLoading", true);
       axios
         .get(`/api/v1/exercises/${type}`)
@@ -140,4 +152,28 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+
+<style lang="scss" scoped>
+.top-title {
+  color: white;
+}
+
+.inner {
+  padding: 4px;
+  background-color: white;
+  border-radius: 6px;
+
+  .content {
+    color: black;
+  }
+}
+
+.image {
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+</style>
+

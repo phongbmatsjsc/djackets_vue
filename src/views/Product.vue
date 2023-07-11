@@ -1,15 +1,15 @@
 <template>
     <div class="page-product">
-        <div class="columns is-multiline">
+        <div class="columns is-multiline product">
             <div class="column is-8">
                 <figure class="image mb-6">
                     <img :src="product.get_image">
                 </figure>
             </div>
             
-            <div class="column is-4">
+            <div class="column is-4 mt-4">
                 <h1 class="title">{{ product.name }}</h1>
-                <p>{{ product.description }}</p>
+                <p class="content">{{ product.description }}</p>
                 
                 <h2 class="subtitle mt-3"><strong>Price: </strong>${{ product.price }}</h2>
                 <div class="field has-addons mt-4">
@@ -21,7 +21,7 @@
                         <a class="button is-primary" @click="addToCart">Add to cart</a>
                     </div>
                 </div>
-                <button @click="goBack" class="button is-dark mt-3">Back to shopping</button>
+                <button @click="goBack" class="button is-dark mt-3 back">Back to shopping</button>
             </div>
         </div>
     </div>
@@ -90,5 +90,15 @@
 </script>
 
 <style lang="scss" scoped>
+.product {
+    background-color: white;
+    border-radius: 8px;
+    .content {
+        color: black;
+    }
+    .back {
+        width: 100%;
+    }
+}
 
 </style>

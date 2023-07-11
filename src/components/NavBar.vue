@@ -1,6 +1,6 @@
 <template>
     <!-- NAVBAR -->
-    <nav class="navbar is-black">
+    <nav class="navbar is-black is-fixed-top">
         <!-- NAVBAR BRAND -->
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item">
@@ -54,12 +54,12 @@
             <!-- EXERLIB AND PRODUCTS -->
             <div class="navbar-item">
               <div class="buttons">
-                <router-link class="button is-primary" to="/exercises">
+                <router-link class="button is-success" to="/exercises">
                   ExerLib
                 </router-link>
                 <div class="dropdown is-hoverable">
                   <div class="dropdown-trigger">
-                    <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <button class="button is-success" aria-haspopup="true" aria-controls="dropdown-menu">
                       <span>Products</span>
                       <span class="icon is-small">
                         <i class="fas fa-angle-down" aria-hidden="true"></i>

@@ -1,18 +1,15 @@
 <template>
     <div class="page-my-account">
-        <div class="columns is-multiline">
-            <div class="column is-12">
+        <div class="columns is-multiline custom">            
+            <div class="column is-12 mb-4">
                 <h1 class="title">My account</h1>
-            </div>
-
-            <div class="column is-12">
                 <button @click="logout()" class="button is-danger">Log out</button>
             </div>
 
             <hr>
 
             <div class="column is-12">
-                <h2 class="subtitle">My orders</h2>
+                <h2 class="title">My orders</h2>
 
                 <OrderSummary
                     v-for="order in orders"
@@ -72,3 +69,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.column {
+    background-color: white;
+    border-radius: 6px;
+}
+
+</style>

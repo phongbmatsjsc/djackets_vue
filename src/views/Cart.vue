@@ -1,10 +1,8 @@
 <template>
     <div class="page-cart">
         <div class="columns is-multiline">
-            <div class="column is-12">
-                <h1 class="title">Cart</h1>
-            </div>
             <div class="column is-12 box">
+                <h1 class="title cart">Cart</h1>
                 <table class="table is-fullwidth" v-if="cartTotalLength">
                     <thead>
                         <tr>
@@ -74,7 +72,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
